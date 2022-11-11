@@ -12,7 +12,7 @@ public class JDBC {
         String url = "jdbc:postregresql://localhost:5432/postgres";
         String user = "postgres";
         String password = "";
-        try (Connection connection = DriverManager .getConnection(url,user,password);
+        try (Connection connection = DriverManager.getConnection(url,user,password);
             Statement statement = connection.createStatement();
         ){
             statement.execute(readSQL("prog.sql"));
@@ -22,7 +22,7 @@ public class JDBC {
 
     public static String readSQL(String file){
         InputStream stream = JDBC.class.getClassLoader().getResourceAsStream(file);
-        return new BufferedReader(new InputStreamReader(stream).lines().collect(Collectors.joining("")));
+        return new BufferedReader(new InputStreamReader(stream)).lines().collect(Collectors.joining(""));
 
     }
 }
