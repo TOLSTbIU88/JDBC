@@ -15,7 +15,9 @@ public class JDBC {
         try (Connection connection = DriverManager.getConnection(url,user,password);
             Statement statement = connection.createStatement();
         ){
+            statement.execute(readSQL("DROP.sql"));
             statement.execute(readSQL("prog.sql"));
+            statement.executeUpdate(readSQL("fillTables.sql"));
         }
 
     }
